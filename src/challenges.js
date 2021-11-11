@@ -34,7 +34,7 @@ function footballPoints(wins, ties) {
 // Desafio 6
 function highestCount(valuesArray) {
   let highest = valuesArray[0];
-  for (let i = 1; i <= valuesArray.length - 1; i += 1) {
+  for (let i = 1; i < valuesArray.length; i += 1) {
     if (valuesArray[i] > highest) {
       highest = valuesArray[i];
     }
@@ -80,11 +80,30 @@ function fizzBuzz(numbersArray) {
 }
 
 // Desafio 9
-function encode() {
-  // seu código aqui
+function encode(stringToEncode) {
+  let conversionArray = ['a', 'e', 'i', 'o', 'u'];
+  let encodedString = stringToEncode;
+  for (let i = 0; i < stringToEncode.length; i += 1) {
+    for (let j = 0; j < conversionArray.length; j += 1) {
+      if (stringToEncode[i] === conversionArray[j]) {
+        encodedString = encodedString.replace(encodedString[i], j + 1);
+      }
+    }
+  }
+  return encodedString;
 }
-function decode() {
-  // seu código aqui
+
+function decode(stringToDecode) {
+  let conversionArray = ['a', 'e', 'i', 'o', 'u'];
+  let decodedString = stringToDecode;
+  for (let i = 0; i < stringToDecode.length; i += 1) {
+    for (let j = 0; j < conversionArray.length; j += 1) {
+      if (stringToDecode[i] == j + 1) {
+        decodedString = decodedString.replace(decodedString[i], conversionArray[j]);
+      }
+    }
+  }
+  return decodedString;
 }
 
 module.exports = {
