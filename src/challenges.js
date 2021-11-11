@@ -20,8 +20,9 @@ function splitSentence(sentence) {
 }
 
 // Desafio 4
-function concatName() {
-  // seu código aqui
+function concatName(stringArray) {
+  let finalString = `${stringArray[stringArray.length - 1]}, ${stringArray[0]}`;
+  return finalString;
 }
 
 // Desafio 5
