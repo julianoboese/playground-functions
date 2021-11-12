@@ -103,7 +103,7 @@ function decode(stringToDecode) {
       if (stringToDecode[i] == j + 1) {
         decodedString = decodedString.replace(
           decodedString[i],
-          conversionArray[j]
+          conversionArray[j],
         );
       }
     }
