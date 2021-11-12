@@ -7,6 +7,8 @@ function compareTrue(boolean1, boolean2) {
   return result;
 }
 
+console.log(compareTrue(false, false));
+
 // Desafio 2
 function calcArea(base, height) {
   let area = (base * height) / 2;
@@ -99,7 +101,10 @@ function decode(stringToDecode) {
   for (let i = 0; i < stringToDecode.length; i += 1) {
     for (let j = 0; j < conversionArray.length; j += 1) {
       if (stringToDecode[i] == j + 1) {
-        decodedString = decodedString.replace(decodedString[i], conversionArray[j]);
+        decodedString = decodedString.replace(
+          decodedString[i],
+          conversionArray[j]
+        );
       }
     }
   }
