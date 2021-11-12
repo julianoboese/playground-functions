@@ -100,7 +100,10 @@ function decode(stringToDecode) {
   let decodedString = stringToDecode;
   for (let i = 0; i < stringToDecode.length; i += 1) {
     for (let j = 0; j < conversionArray.length; j += 1) {
-      if (stringToDecode[i] == j + 1) {
+      /** Usei a função Number para poder usar o operador === em vez de ==
+       * Source: https://stackoverflow.com/questions/1133770/how-to-convert-a-string-to-an-integer-in-javascript
+      */
+      if (Number(stringToDecode[i]) === j + 1) {
         decodedString = decodedString.replace(
           decodedString[i],
           conversionArray[j],
