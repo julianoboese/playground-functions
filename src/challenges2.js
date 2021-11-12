@@ -66,7 +66,10 @@ function triangleCheck(lineA, lineB, lineC) {
   let lines = [lineA, lineB, lineC];
   let triangle = true;
   for (let i = 0; i < lines.length; i += 1) {
-    if (lines[0] >= (lines[1] + lines[2]) || lines[1] <= (Math.abs(lines[1] - lines[2]))) {
+    if (
+      lines[0] >= lines[1] + lines[2] ||
+      lines[1] <= Math.abs(lines[1] - lines[2])
+    ) {
       triangle = false;
     }
     lines.push(lines[0]);
@@ -76,8 +79,16 @@ function triangleCheck(lineA, lineB, lineC) {
 }
 
 // Desafio 13
-function hydrate() {
-  // seu código aqui
+function hydrate(drinks) {
+  let numbers = drinks.match(/\d+/g).map(Number);
+  let water = 0;
+  for (let number of numbers) {
+    water += number;
+  }
+  if (water === 1) {
+    return `${water} copo de água`;
+  }
+  return `${water} copos de água`;
 }
 
 module.exports = {
