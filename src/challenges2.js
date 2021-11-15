@@ -1,25 +1,9 @@
 // Desafio 10
-/** Foi criada a função "bubbleSort" com base no algoritmo disponibilizado no course.
- * Source: https://app.betrybe.com/course/fundamentals/introducao-a-javascript-e-logica-de-programacao/javascript-array-e-loop-for/3d453622-6c99-46af-a884-fecc68811230/exercicios/01cd0d52-03f7-4c66-8c94-2fe2a642d715/bonus/03759a6f-6460-4a79-8ab8-9aa449dad32b?use_case=side_bar
- */
-function bubbleSort(arrayToSort) {
-  for (let i = 1; i < arrayToSort.length; i += 1) {
-    for (let j = 0; j < i; j += 1) {
-      if (arrayToSort[i] < arrayToSort[j]) {
-        let position = arrayToSort[i];
-        arrayToSort[i] = arrayToSort[j];
-        arrayToSort[j] = position;
-      }
-    }
-  }
-  return arrayToSort;
-}
-
 function techList(techArray, name) {
   if (techArray.length === 0) {
     return 'Vazio!';
   }
-  let sortedArray = bubbleSort(techArray);
+  let sortedArray = techArray.sort();
   let newTechArray = [];
   for (let technology of sortedArray) {
     newTechArray.push({ tech: technology, name });
@@ -28,23 +12,35 @@ function techList(techArray, name) {
 }
 
 // Desafio 11
-function checkRepeated(array) {
-  let count = 1;
-  let repeated = false;
-  for (let i = 2; i < array.length; i += 1) {
-    for (let j = 0; j < i; j += 1) {
-      if (array[i] === array[j]) {
-        count += 1;
-      }
+function checkInvalidNumber(numberArray) {
+  for (let number of numberArray) {
+    if (number < 0 || number > 9) {
+      return true;
     }
-    if (count >= 3) {
-      repeated = true;
+  }
+  return false;
+}
+
+function createNumberObject(numberArray) {
+  let numberObject = {};
+  for (let i = 0; i < numberArray.length; i += 1) {
+    if (numberObject[numberArray[i]] === undefined) {
+      numberObject[numberArray[i]] = 1;
+    } else {
+      numberObject[numberArray[i]] += 1;
     }
-    count = 1;
   }
-  if (repeated) {
-    return true;
+  return numberObject;
+}
+
+function checkRepeated(numberObject) {
+  let phoneNnumberObject = createNumberObject(numberObject);
+  for (let key in phoneNnumberObject) {
+    if (phoneNnumberObject[key] >= 3) {
+      return true;
+    }
   }
+  return false;
 }
 
 function generatePhoneNumber(phoneNumberArray) {
@@ -52,13 +48,7 @@ function generatePhoneNumber(phoneNumberArray) {
     return 'Array com tamanho incorreto.';
   }
 
-  for (let number of phoneNumberArray) {
-    if (number < 0 || number > 9) {
-      return 'não é possível gerar um número de telefone com esses valores';
-    }
-  }
-
-  if (checkRepeated(phoneNumberArray) === true) {
+  if (checkInvalidNumber(phoneNumberArray) === true || checkRepeated(phoneNumberArray) === true) {
     return 'não é possível gerar um número de telefone com esses valores';
   }
 
@@ -67,14 +57,16 @@ function generatePhoneNumber(phoneNumberArray) {
   return phoneNumber;
 }
 
+console.log(generatePhoneNumber([0, 21, 3, 4, 14, 2, 7, 8, 19, 9, 4]));
+
 // Desafio 12
 function triangleCheck(lineA, lineB, lineC) {
   let lines = [lineA, lineB, lineC];
   let triangle = true;
   for (let i = 0; i < lines.length; i += 1) {
     if (
-      lines[0] >= lines[1] + lines[2] ||
-      lines[1] <= Math.abs(lines[1] - lines[2])
+      lines[0] >= lines[1] + lines[2]
+      || lines[1] <= Math.abs(lines[1] - lines[2])
     ) {
       triangle = false;
     }
