@@ -27,10 +27,19 @@ function footballPoints(wins, ties) {
 }
 
 // Desafio 6
+// Função auxiliar criada para reduzir a complexidade da função "highestCount".
+function findHighest(valuesArray) {
+  let highest = valuesArray[0];
+  for (let i = 1; i < valuesArray.length; i += 1) {
+    if (valuesArray[i] > highest) {
+      highest = valuesArray[i];
+    }
+  }
+  return highest;
+}
+
 function highestCount(valuesArray) {
-  /** Ref 1: Para reduzir a complexidade da função e atender ao ESLint, utilizei a função Math.max.
-   * Source: https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Math/max#retornando_o_maior_elemento_de_um_array */
-  let highest = Math.max(...valuesArray);
+  let highest = findHighest(valuesArray);
   let count = 0;
   for (let value of valuesArray) {
     if (value === highest) {
@@ -39,24 +48,6 @@ function highestCount(valuesArray) {
   }
   return count;
 }
-
-// function highestCount2(valuesArray) {
-//   let highest = valuesArray[0];
-//   for (let i = 1; i < valuesArray.length; i += 1) {
-//     if (valuesArray[i] > highest) {
-//       highest = valuesArray[i];
-//     }
-//   }
-
-//   let count = 0;
-//   for (let value of valuesArray) {
-//     if (value === highest) {
-//       count += 1;
-//     }
-//   }
-//   return count;
-// }
-// console.log(highestCount2([9, 1, 2, 3, 9, 5, 7]));
 
 // Desafio 7
 function catAndMouse(mouse, cat1, cat2) {
@@ -113,11 +104,11 @@ function encode(stringToEncode) {
   }
   return encodedString;
 }
-/** Ref 2: Condicional criado conforme documentação do ESLint para viabilizar a utilização do "for in".
+/** Ref 1: Condicional criado conforme documentação do ESLint para viabilizar a utilização do "for in".
 * Source: https://eslint.org/docs/rules/guard-for-in */
-/** Ref 3: Utilizei o objeto "new RegExp" para implementar o método "replace" com a flag "g".
+/** Ref 2: Utilizei o objeto "new RegExp" para implementar o método "replace" com a flag "g".
 * Source: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp */
-/** Ref 4: Para reduzir a complexidade da função, utilizei o método "replace" com a flag "g" (global) para substituir todas as ocorrências sem necessidade de um loop.
+/** Ref 3: Para reduzir a complexidade da função, utilizei o método "replace" com a flag "g" (global) para substituir todas as ocorrências sem necessidade de um loop.
 * Source: https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/String/replaceAll */
 
 // Versão alternativa sem utilização de funções/métodos consultados na internet, porém com complexidade acima de 5.
@@ -161,7 +152,7 @@ function decode(stringToEncode) {
 //   let decodedString = stringToDecode;
 //   for (let i = 0; i < stringToDecode.length; i += 1) {
 //     for (let j = 0; j < conversionArray.length; j += 1) {
-//       /** Ref 5: Usei a função Number para poder usar o operador === em vez de ==
+//       /** Ref 4: Usei a função Number para poder usar o operador === em vez de ==
 //        * Source: https://stackoverflow.com/questions/1133770/how-to-convert-a-string-to-an-integer-in-javascript */
 //       if (Number(stringToDecode[i]) === j + 1) {
 //         decodedString = decodedString.replace(

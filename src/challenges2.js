@@ -79,7 +79,7 @@ function triangleCheck(lineA, lineB, lineC) {
 
 // Desafio 13
 function hydrate(drinks) {
-  /** Ref 6: A primeira linha desta função foi utilizada para gerar um array com os números da string "drinks".
+  /** Ref 1: A primeira linha desta função foi utilizada para gerar um array com os números da string "drinks".
    * Source: https://codereview.stackexchange.com/questions/115885/extract-numbers-from-a-string-javascript
    */
   let numbers = drinks.match(/\d+/g).map(Number);
