@@ -12,6 +12,7 @@ function techList(techArray, name) {
 }
 
 // Desafio 11
+// Função auxiliar criada para reduzir a complexidade da função "generatePhoneNumber".
 function checkInvalidNumber(numberArray) {
   for (let number of numberArray) {
     if (number < 0 || number > 9) {
@@ -21,6 +22,7 @@ function checkInvalidNumber(numberArray) {
   return false;
 }
 
+// Função auxiliar criada para reduzir a complexidade da função "checkRepeated".
 function createNumberObject(numberArray) {
   let numberObject = {};
   for (let i = 0; i < numberArray.length; i += 1) {
@@ -33,6 +35,7 @@ function createNumberObject(numberArray) {
   return numberObject;
 }
 
+// Função auxiliar criada para reduzir a complexidade da função "generatePhoneNumber".
 function checkRepeated(numberObject) {
   let phoneNnumberObject = createNumberObject(numberObject);
   for (let key in phoneNnumberObject) {
@@ -51,13 +54,11 @@ function generatePhoneNumber(phoneNumberArray) {
   if (checkInvalidNumber(phoneNumberArray) === true || checkRepeated(phoneNumberArray) === true) {
     return 'não é possível gerar um número de telefone com esses valores';
   }
-
-  let phoneNumber = `(${phoneNumberArray[0]}${phoneNumberArray[1]}) ${phoneNumberArray[2]}${phoneNumberArray[3]}${phoneNumberArray[4]}${phoneNumberArray[5]}${phoneNumberArray[6]}-${phoneNumberArray[7]}${phoneNumberArray[8]}${phoneNumberArray[9]}${phoneNumberArray[10]}`;
+  let ddd = `(${phoneNumberArray.splice(0, 2).join('')})`;
+  let phoneNumber = `${ddd} ${phoneNumberArray.splice(0, 5).join('')}-${phoneNumberArray.join('')}`;
 
   return phoneNumber;
 }
-
-console.log(generatePhoneNumber([0, 21, 3, 4, 14, 2, 7, 8, 19, 9, 4]));
 
 // Desafio 12
 function triangleCheck(lineA, lineB, lineC) {
@@ -78,7 +79,7 @@ function triangleCheck(lineA, lineB, lineC) {
 
 // Desafio 13
 function hydrate(drinks) {
-  /** A primeira linha desta função foi utilizada para gerar um array com os números da string "drinks"
+  /** Ref 6: A primeira linha desta função foi utilizada para gerar um array com os números da string "drinks".
    * Source: https://codereview.stackexchange.com/questions/115885/extract-numbers-from-a-string-javascript
    */
   let numbers = drinks.match(/\d+/g).map(Number);
