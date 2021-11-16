@@ -52,9 +52,11 @@ function highestCount(valuesArray) {
 // Desafio 7
 function catAndMouse(mouse, cat1, cat2) {
   let winner;
-  if (Math.abs(mouse - cat1) < Math.abs(mouse - cat2)) {
+  let distanceCat1 = Math.abs(mouse - cat1);
+  let distanceCat2 = Math.abs(mouse - cat2);
+  if (distanceCat1 < distanceCat2) {
     winner = 'cat1';
-  } else if (Math.abs(mouse - cat1) > Math.abs(mouse - cat2)) {
+  } else if (distanceCat1 > distanceCat2) {
     winner = 'cat2';
   } else {
     winner = 'os gatos trombam e o rato foge';
@@ -126,7 +128,7 @@ function encode(stringToEncode) {
 // }
 // console.log(encode2('hi there!'));
 
-function decode(stringToEncode) {
+function decode(stringToDecode) {
   let conversionObject = {
     a: 1,
     e: 2,
@@ -135,7 +137,7 @@ function decode(stringToEncode) {
     u: 5,
   };
 
-  let decodedString = stringToEncode;
+  let decodedString = stringToDecode;
   for (let key in conversionObject) {
     if ({}.hasOwnProperty.call(conversionObject, key)) {
       let replacedNumber = new RegExp(conversionObject[key], 'g');
