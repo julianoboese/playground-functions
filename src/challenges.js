@@ -128,6 +128,22 @@ function encode(stringToEncode) {
 // }
 // console.log(encode2('hi there!'));
 
+// Versão alternativa sem utilização de funções/métodos consultados na internet, porém usando força bruta.
+// function encode3(stringToEncode) {
+//   let lettersArray = stringToEncode.split('');
+//   for (let i = 0; i < lettersArray.length; i += 1) {
+//     lettersArray[i] = lettersArray[i].replace('a', '1');
+//     lettersArray[i] = lettersArray[i].replace('e', '2');
+//     lettersArray[i] = lettersArray[i].replace('i', '3');
+//     lettersArray[i] = lettersArray[i].replace('o', '4');
+//     lettersArray[i] = lettersArray[i].replace('u', '5');
+//   }
+//   let encodedString = lettersArray.join('');
+//   return encodedString;
+// }
+//
+// console.log(encode3('hi there!'));
+
 function decode(stringToDecode) {
   let conversionObject = {
     a: 1,
@@ -167,6 +183,22 @@ function decode(stringToDecode) {
 //   return decodedString;
 // }
 // console.log(decode2('h3 th2r2!'));
+
+// Versão alternativa sem utilização de funções/métodos consultados na internet, porém usando força bruta.
+// function decode3(stringToDecode) {
+//   let lettersArray = stringToDecode.split('');
+//   for (let i = 0; i < lettersArray.length; i += 1) {
+//     lettersArray[i] = lettersArray[i].replace('1', 'a');
+//     lettersArray[i] = lettersArray[i].replace('2', 'e');
+//     lettersArray[i] = lettersArray[i].replace('3', 'i');
+//     lettersArray[i] = lettersArray[i].replace('4', 'o');
+//     lettersArray[i] = lettersArray[i].replace('5', 'u');
+//   }
+//   let decodedString = lettersArray.join('');
+//   return decodedString;
+// }
+
+// console.log(decode3('h3 th2r2!'));
 
 module.exports = {
   calcArea,
